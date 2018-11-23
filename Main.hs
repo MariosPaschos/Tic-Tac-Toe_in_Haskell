@@ -2,7 +2,10 @@ import Player
 import Utils
 
 
+
 main = do
-    let x = X
-    let p = Player x
-    print $ getSign p
+    
+    -- let board = grid 3 0
+    -- printGrid $ grid 3 0
+    let b = [0..8]
+

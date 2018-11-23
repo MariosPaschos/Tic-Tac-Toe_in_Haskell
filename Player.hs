@@ -14,6 +14,4 @@ module Player where
         getSign player = sign player
         toString player = 
             "Player " ++ show (getSign player) 
-    
-   
-
+ 
