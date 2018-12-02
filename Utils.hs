@@ -2,11 +2,6 @@ module Utils where
 
     import Data.Array
 
-    --Player signs: X and O
-    data Sign = N | X | O 
-        deriving (Eq, Ord, Show, Read, Bounded, Enum)
-
-        
     --Array representing the game board and the function to display it
     grid :: Int -> a -> Array(Int, Int) a
     grid size value = array ((0,0),(size-1,size-1)) [((x,y),value) | x<-[0..size-1], y<-[0..size-1]]
