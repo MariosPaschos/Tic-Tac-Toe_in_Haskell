@@ -23,11 +23,15 @@ module Game where
         | (Empty `elem` board) == True = False
         | otherwise = True
 
-    isMoveLegal :: Int -> Bool    
-    isMoveLegal move
+    isMoveValid :: Int -> Bool    
+    isMoveValid move
         | 0 <= move && move <= 8  = True
         | otherwise = False
 
+    isMoveLegal :: [Sign] -> Int -> Bool    
+    isMoveLegal board move
+        | (board !! move) == Empty = True
+        | otherwise = False
 
     displayBoard :: Show a => [a] -> IO () 
     displayBoard board@(x:xs) = do
@@ -35,6 +39,10 @@ module Game where
         print $ take 3 board
         print $ take 3 board
 
+
+
+
+        
     -- {- Returns the new board configuration after the played move -}   
     -- --applyMoveOnBoard :: Int a => a -> [Sign s1] -> [Sign s2]
     -- applyMoveOnBoard move board@(x:xs) player = 
