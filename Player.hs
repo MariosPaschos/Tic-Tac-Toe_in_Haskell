@@ -7,13 +7,13 @@ module Player where
     --Function to extract Sign from a character (e.g. 'X' -> X)
     charToSign :: Char -> Sign
     charToSign ch
-        | ch == 'X' = X
-        | ch == 'O' = O
+        | ch == 'x' || ch == 'X' = X
+        | ch == 'o' || ch == 'O' = O
         | otherwise = Empty
 
     data Player = Player {
         sign :: Sign
-    } deriving (Eq, Show)
+    } deriving (Eq, Show, Read)
 
 
     class PlayerInfo player where
@@ -23,4 +23,8 @@ module Player where
     instance PlayerInfo Player where
         getSign player = sign player
         toString player = 
-            "Player " ++ show (getSign player)
+            "Player " ++  (show turn) ++ " plays with " ++ show (getSign player)
+            where
+                turn = case (getSign player) of X -> 1
+                                                O -> 2
+                                      

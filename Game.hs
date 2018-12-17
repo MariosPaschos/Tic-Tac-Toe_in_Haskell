@@ -42,7 +42,7 @@ module Game where
 
 
 
-        
+
     -- {- Returns the new board configuration after the played move -}   
     -- --applyMoveOnBoard :: Int a => a -> [Sign s1] -> [Sign s2]
     -- applyMoveOnBoard move board@(x:xs) player = 
@@ -55,15 +55,3 @@ module Game where
     -- makeMoveOn square board@(x:xs) player =
     --     if isMoveLegal square then applyMoveOnBoard square board player
     --     else board
-
-
-
-    -- play = do
-    --     -- Create a list/board with 9 empty (N) elements representing the initial game board
-    --     let initBoard = [x| x <- replicate 9 Empty]
-    --     print $ initBoard
-    --     let s >>= selectSign
-    --     let human = Player s
-    --     let machine = getOpponent human
-
-    --     putStrLn "Current board configuration: "
