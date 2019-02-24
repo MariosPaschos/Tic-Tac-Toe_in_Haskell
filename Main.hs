@@ -8,8 +8,8 @@ import Data.Either
 import Data.List
 
 
-selectToken = do
-
+selectSign :: IO Player
+selectSign = do
     --Human player selects sign
     putStrLn "Choose a sign to play (X | O)"
     choice <- liftIO getChar
@@ -17,7 +17,7 @@ selectToken = do
         then do
             putStrLn "Invalid sign!"
             putStrLn "Try again"
-            selectToken     
+            selectSign     
     else do      
         let sign = charToSign choice
 
@@ -37,4 +37,4 @@ main = do
     let initBoard = replicate 9 Empty
     displayBoard initBoard
 
-    selectToken
+    selectSign

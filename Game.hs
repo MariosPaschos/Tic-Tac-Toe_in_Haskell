@@ -32,6 +32,13 @@ module Game where
         | (board !! move) == Empty = True
         | otherwise = False
 
+    --Updating the board after move in position m
+    updateBoard :: [Int] -> Int -> [Int]
+    updateBoard curBoard m = newBoard
+        where
+            newBoard = (take m curBoard) ++ [m] ++ snd (splitAt (m+1) curBoard)
+ 
+
     displayBoard :: Show a => [a] -> IO () 
     displayBoard board@(x:xs) = do
         print $ [(board !! n)| n <- [0..2]]
