@@ -2,13 +2,13 @@ import Player
 import Game
 
 import Control.Monad.State
-
 import Control.Monad
+import Control.Monad.Loops
 import Data.Either
 import Data.List
 
 
-selectPlayer = do
+selectToken = do
 
     --Human player selects sign
     putStrLn "Choose a sign to play (X | O)"
@@ -36,4 +36,7 @@ main = do
     let initBoard = replicate 9 Empty
     displayBoard initBoard
 
-    forever selectPlayer
+    forever selectToken
+
+    -- whileM_ (isBoardFull initBoard == False) $ do
+    --     selectToken

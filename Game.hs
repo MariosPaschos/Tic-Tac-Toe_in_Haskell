@@ -10,7 +10,7 @@ module Game where
 
     selectPlayer :: IO Sign
     selectPlayer = do
-        putStrLn "Choose a sign to play (X | O)"
+        putStrLn "Choose a sign to play: X | O"
         choice <- getChar
         let s = charToSign choice
         if s == X then return X

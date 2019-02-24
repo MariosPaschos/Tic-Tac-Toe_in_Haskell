@@ -1,8 +1,8 @@
 module Player where
     
     --Player signs: X and O
-    data Sign = Empty | X | O 
-        deriving (Eq, Show, Read, Bounded, Enum)
+    data Sign = Empty | X | O  
+        deriving (Ord, Eq, Show, Read, Bounded, Enum)
 
     --Function to extract Sign from a character (e.g. 'X' -> X)
     charToSign :: Char -> Sign
