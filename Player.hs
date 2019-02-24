@@ -1,5 +1,7 @@
 module Player where
-    
+
+    import Control.Monad.State(liftIO)
+
     --Player signs: X and O
     data Sign = Empty | X | O  
         deriving (Ord, Eq, Show, Read, Bounded, Enum)
@@ -27,4 +29,22 @@ module Player where
             where
                 turn = case (getSign player) of X -> 1
                                                 O -> 2
-                                      
+   
+                                                
+    selectSign :: IO Player
+    selectSign = do
+        --Human player selects sign
+        putStrLn "Choose a sign to play (X | O)"
+        choice <- liftIO getChar
+        if choice /= 'X' && choice /= 'O'
+            then do
+                putStrLn "Invalid sign!"
+                putStrLn "Try again"
+                selectSign     
+        else do      
+            let sign = charToSign choice
+
+            --Assigning symbol to human player
+            let human = Player sign
+
+            return human               
