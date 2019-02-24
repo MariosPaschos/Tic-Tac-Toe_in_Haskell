@@ -33,10 +33,10 @@ module Game where
         | otherwise = False
 
     --Updating the board after move in position m
-    updateBoard :: [Int] -> Int -> [Int]
-    updateBoard curBoard m = newBoard
+    updateBoard :: [Sign] -> Int -> Player -> [Sign]
+    updateBoard curBoard m player = newBoard
         where
-            newBoard = (take m curBoard) ++ [m] ++ snd (splitAt (m+1) curBoard)
+            newBoard = (take m curBoard) ++ [getSign player] ++ snd (splitAt (m+1) curBoard)
  
 
     displayBoard :: Show a => [a] -> IO () 

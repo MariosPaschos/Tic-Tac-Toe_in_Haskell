@@ -43,7 +43,6 @@ module Player where
                 selectSign     
         else do      
             let sign = charToSign choice
-
             --Assigning symbol to human player
             let human = Player sign
 
