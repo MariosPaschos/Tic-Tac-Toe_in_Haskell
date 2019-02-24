@@ -13,20 +13,21 @@ selectToken = do
     --Human player selects sign
     putStrLn "Choose a sign to play (X | O)"
     choice <- liftIO getChar
-    let sign = charToSign choice
+    if choice /= 'X' && choice /= 'O'
+        then do
+            putStrLn "Invalid sign!"
+            putStrLn "Try again"
+            selectToken     
+    else do      
+        let sign = charToSign choice
 
-    --Assigning symbols to players
-    let human = Player sign
-    let machine = getOpponent human
+        --Assigning symbol to human player
+        let human = Player sign
 
-    if sign == X then
-        print 1
-        -- putStrLn "Human: "
-        -- print $ human
-        -- putStrLn "Machine: "
-        -- print $ machine
-    else
-        print $ 0
+        return human
+        
+
+    
 
 
 
@@ -36,7 +37,4 @@ main = do
     let initBoard = replicate 9 Empty
     displayBoard initBoard
 
-    forever selectToken
-
-    -- whileM_ (isBoardFull initBoard == False) $ do
-    --     selectToken
+    selectToken
